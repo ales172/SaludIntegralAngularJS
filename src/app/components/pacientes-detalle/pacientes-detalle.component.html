@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="mat-elevation-z8">
+    <table class="mat-table">
+      <tr class="mat-header-row">
+        <th class="mat-header-cell">Nombre</th>
+        <th class="mat-header-cell">Apellido</th>
+        <th class="mat-header-cell">DNI</th>
+        <th class="mat-header-cell">Fecha de Nacimiento</th>
+      </tr>
+      <tr class="mat-row">
+        <td class="mat-cell">{{element.nombre_paciente}}</td>
+        <td class="mat-cell">{{element.apellido_paciente}}</td>
+        <td class="mat-cell">{{element.dni}}</td>
+        <td class="mat-cell">{{element.fecha_nacimiento | date: "dd/MM/yyyy"}}</td>
+      </tr>
+      <tr class="mat-header-row">
+        <th class="mat-header-cell">Obra Social</th>
+        <th class="mat-header-cell">Número de Obra Social</th>
+        <th class="mat-header-cell">Número de Teléfono</th>
+        <th class="mat-header-cell">Número de Contácto</th>
+      </tr>
+      <tr class="mat-row">
+        <td class="mat-cell">{{element.obra_social}}</td>
+        <td class="mat-cell">{{element.numero_os}}</td>
+        <td class="mat-cell">{{element.telefono}}</td>
+        <td class="mat-cell">{{element.telefono_contacto}}</td>
+      </tr>
+      <tr>
+        <td colspan="4" style="width: 100%;">
+        <div>
+          <button mat-button matTooltip="Ver la ficha del paciente" (click)="fichaDialog()">Ficha</button>
+          <button mat-button matTooltip="Ver observaciones del paciente" (click)="observacionesDialog()">Observaciones</button>
+          <button mat-button matTooltip="Ver tratamientos del paciente"(click)="tratamientosDialog()">Tratamientos</button>
+          <button mat-button matTooltip="Ver turnos del paciente" (click)="turnosDialog()">Turnos</button>
+        </div>
+      </td>
+      </tr>
+      <tr style="justify-content: center;">
+        <td colspan="4" style="width: 100%;">
+        <div class="footer">
+          <button mat-raised-button  color="primary" class="push-right" style="width: 83.11px;"
+            [routerLink]="['/PacienteEdita/',id]">Editar</button>
+          <button mat-raised-button  color="warn" (click)="deletePaciente(id, element)">Eliminar</button>
+        </div>
+      </td>
+      </tr>
+    </table>
+  </div>
+</div>

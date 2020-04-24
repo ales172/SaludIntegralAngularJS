@@ -1,0 +1,25 @@
+<!-- Toolbar -->
+<mat-toolbar color="primary" class="header">
+    <div>Salud Integral</div>
+    <span class="nav-tool-items">
+        <mat-icon (click)="sidenav.toggle()" class="hamburger">menu</mat-icon>
+    </span>
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <!-- Sidenav -->
+    <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
+    [fixedTopGap]>
+    <mat-nav-list style="padding-top: 50px;">
+        <a mat-list-item href="#" routerLink="/Calendar">Turnos</a>
+        <a mat-list-item href="#"routerLink="/PacienteLista">Pacientes</a>
+        <a mat-list-item href="#"routerLink="/ProfesionalLista">Profesionales</a>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <!-- Main content -->
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

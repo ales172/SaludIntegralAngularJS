@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Crear Turno</h2>
+
+<mat-dialog-content [formGroup]="form">
+    <div>
+        <mat-form-field>
+            <mat-label>Profesional:</mat-label>
+            <mat-select [formControl]="profesionalControl" required>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let profesional of profesionales" [value]="profesional">
+                    {{profesional.apellido_profesional}}, {{profesional.nombre_profesional}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="profesionalControl.hasError('required')">Debe elegir un preofesional</mat-error>
+            <mat-hint>{{profesionalControl.value?.especialidad}}</mat-hint>
+        </mat-form-field>
+    </div>
+    <br>
+    <div>
+        <mat-form-field color="accent">
+            <mat-label>Fecha</mat-label>
+            <input matInput type="text" [value]="fecha">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field color="accent">
+            <mat-label>Hora</mat-label>
+            <input matInput type="text" [value]="hora">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Paciente:</mat-label>
+            <mat-select [formControl]="pacienteControl" required>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let paciente of pacientes" [value]="paciente">
+                    {{paciente.apellido_paciente}}, {{paciente.nombre_paciente}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="pacienteControl.hasError('required')">Debe elegir un paciente</mat-error>
+        </mat-form-field>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-raised-button (click)="close()">Cerrar</button>
+    <button mat-raised-button color="primary" (click)="save()">Guardar</button>
+</mat-dialog-actions>

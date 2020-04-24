@@ -1,0 +1,86 @@
+<!-- Title group  -->
+<div class="title-group">
+    <h1 class="mat-h1">Editar Profesional</h1>
+    <mat-divider fxFlex="1 0"></mat-divider>
+</div>
+
+<!-- Form  del profesional-->
+<div class="inner-wrapper">
+    <form [formGroup]="editProfesionalForm" (ngSubmit)="updateProfesional()" #resetBookForm="ngForm" novalidate>
+        <!-- Left block -->
+        <mat-card>
+            <div class="controlers-wrapper">
+                <!-- Nombre -->
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Nombre" formControlName="nombre_profesional">
+                    <mat-error *ngIf="handleError('nombre_profesional', 'required')">
+                        Debe ingresar el <strong>nombre</strong> del profesional
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Apellido -->
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Apellido" formControlName="apellido_profesional">
+                    <mat-error *ngIf="handleError('apellido_profesional', 'required')">
+                        Debe ingresar el <strong>apellido</strong> del profesional
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- DNI -->
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="DNI" formControlName="dni" pattern="[0-9]*" minlength="7"
+                        maxlength="8">
+                    <mat-error *ngIf="handleError('dni', 'required')">
+                        Debe ingresar el <strong>DNI</strong>
+                    </mat-error>
+                    <mat-error *ngIf="handleError('dni', 'pattern')">
+                        Ingresar DNI sin puntos, solo números
+                    </mat-error>
+                    <mat-error *ngIf="handleError('dni', 'minlength')">
+                        El <strong>DNI</strong> debe ser de 7/8 números
+                    </mat-error>
+                    <mat-error *ngIf="handleError('dni', 'maxlength')">
+                        El <strong>DNI</strong> debe ser de 7/8 números
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </mat-card>
+
+        <!-- Right block -->
+        <mat-card>
+            <div class="controlers-wrapper">
+                <!-- Matrícula -->
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Matrícula" formControlName="matricula">
+                    <mat-error *ngIf="handleError('matricula', 'required')">
+                        Debe ingresar la <strong>Matricula</strong> del profesional
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Especialidad -->
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Especialidad" formControlName="especialidad">
+                    <mat-error *ngIf="handleError('especialidad', 'required')">
+                        Debe ingresar la <strong>Especialidad</strong> del profesional
+                    </mat-error>
+                </mat-form-field>
+
+
+                <!-- Numero teléfono -->
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Número de teléfono" formControlName="telefono" pattern="[0-9]*">
+                    <mat-error *ngIf="handleError('telefono', 'required')">
+                        Debe ingresar el <strong>número de teléfono</strong> del profesional
+                    </mat-error>
+                    <mat-error *ngIf="handleError('telefono', 'pattern')">
+                        Debe ingresar el <strong>número de teléfono</strong> del profesional, sin caracteres ("+, .,
+                        ()"), sólo números
+                    </mat-error>
+                </mat-form-field>
+                    <div class="button-wrapper">
+                        <button mat-flat-button color="warn">Submit</button>
+                    </div>
+            </div>
+        </mat-card>
+    </form>
+</div>

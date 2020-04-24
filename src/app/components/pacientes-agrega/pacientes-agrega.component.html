@@ -1,0 +1,116 @@
+<!-- Title group  -->
+<div class="title-group">
+    <h1 class="mat-h1">Agregar Paciente</h1>
+    <mat-divider fxFlex="1 0"></mat-divider>
+</div>
+
+<!-- Form  del paciente-->
+<div class="inner-wrapper">
+    <form [formGroup]="pacienteForm" (ngSubmit)="submitPaciente()" #resetProfesionalForm="ngForm" novalidate>
+        <!-- Left block -->
+        <mat-card>
+            <div class="controlers-wrapper">
+                <!-- Nombre -->
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Nombre" formControlName="nombre_paciente" autocomplete="off">
+                    <mat-error *ngIf="handleError('nombre_paciente', 'required')">
+                        Debe ingresar el <strong>nombre</strong> del paciente
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Apellido -->
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Apellido" formControlName="apellido_paciente" autocomplete="off">
+                    <mat-error *ngIf="handleError('apellido_paciente', 'required')">
+                        Debe ingresar el <strong>apellido</strong> del paciente
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- DNI -->
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="DNI" formControlName="dni" pattern="[0-9]*" minlength="7"
+                        maxlength="8" autocomplete="off">
+                    <mat-error *ngIf="handleError('dni', 'required')">
+                        Debe ingresar el <strong>DNI</strong>
+                    </mat-error>
+                    <mat-error *ngIf="handleError('dni', 'pattern')">
+                        Ingresar DNI sin puntos, solo números
+                    </mat-error>
+                    <mat-error *ngIf="handleError('dni', 'minlength')">
+                        El <strong>DNI</strong> debe ser de 7/8 números
+                    </mat-error>
+                    <mat-error *ngIf="handleError('dni', 'maxlength')">
+                        El <strong>DNI</strong> debe ser de 7/8 números
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Fecha de nacimiento -->
+                <mat-form-field>
+                    <input matInput readonly [matDatepicker]="picker" placeholder="Fecha de nacimiento"
+                        formControlName="fecha_nacimiento" (dateChange)="formatDate($event)">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="handleError('fecha_nacimiento', 'required')">
+                        Debe ingresar fecha de nacimiento del paciente
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </mat-card>
+
+        <!-- Right block -->
+        <mat-card>
+            <div class="controlers-wrapper">
+                <!-- Obra social -->
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Obra Social" formControlName="obra_social"autocomplete="off">
+                    <mat-error *ngIf="handleError('obra_social', 'required')">
+                        Debe ingresar la <strong>Obra Social</strong> del paciente
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Numero Obra social -->
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Número Obra Social" formControlName="numero_os" pattern="[0-9]*">
+                    <mat-error *ngIf="handleError('numero_os', 'required')" autocomplete="off">
+                        Debe ingresar el <strong>número de Obra Social</strong> del paciente
+                    </mat-error>
+                    <mat-error *ngIf="handleError('numero_os', 'pattern')">
+                        Debe ingresar el número de la obra social del paciente, sin puntos ni letras
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Numero teléfono -->
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Número de teléfono" formControlName="telefono" pattern="[0-9]*" autocomplete="off">
+                    <mat-error *ngIf="handleError('telefono', 'required')">
+                        Debe ingresar el <strong>número de teléfono</strong> del paciente
+                    </mat-error>
+                    <mat-error *ngIf="handleError('telefono', 'pattern')">
+                        Debe ingresar el <strong>número de teléfono</strong> del paciente, sin caracteres ("+, ., ()"), sólo números
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Numero de teléfono de contacto-->
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Número de teléfono de contacto" formControlName="telefono_contacto" pattern="[0-9]*"autocomplete="off">
+                    <mat-error *ngIf="handleError('telefono_contacto', 'required')">
+                        Debe ingresar el <strong>número de teléfono</strong> del paciente
+                    </mat-error>
+                    <mat-error *ngIf="handleError('telefono_contacto', 'pattern')">
+                        Debe ingresar el <strong>número de teléfono</strong> del paciente, sin caracteres ("+, ., ()"), sólo números
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </mat-card>
+
+        <!-- Submit & Reset -->
+        <mat-card>
+            <div class="full-wrapper button-wrapper">
+                <div class="button-wrapper">
+                    <button mat-flat-button color="warn">Aceptar</button>
+                    <button mat-flat-button color="war" (click)="resetForm()">Limpiar</button>
+                </div>
+            </div>
+        </mat-card>
+    </form>
+</div>
